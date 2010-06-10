@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  respond_to :html, :json, :only => :find
+  
   def index
   end
 
@@ -24,6 +26,24 @@ class ProfilesController < ApplicationController
     else
       handle_error('Wrong format!') and return
     end
+    
+    # Parse Facebook Graph API with profile id
+    uri = URI.parse('http://graph.facebook.com/' + profile_id)
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)    
+    response = http.request(request)
+    
+    # Decode old JSON response as hash
+    @result = ActiveSupport::JSON.decode(response.body)
+    
+    # Redirect to error page if invalid ID or none found
+    handle_error('Nothing found!') and return unless @result.respond_to?(:has_key?) and @result.has_key?("name")
+    
+    # Add Facebook link if not included in data fetched from API
+    @result["link"] ||= profile_link_for(@result["id"])
+    
+    # Respond!
+    respond_with(@result)
   end
   
   private
