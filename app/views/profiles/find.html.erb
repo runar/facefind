@@ -1,9 +1,7 @@
 <%= render "search_form" %>
 
-<%= flash_notice %>
-
 <div id="results">
-	<h2 id="name"><%= link_to @result['name'], @result['link'] %></h2>
+	<h2 id="name"><%= link_to @result['name'], @result['link'] unless flash_notice %></h2>
 	<div id="picture"><%= link_to image_tag('http://graph.facebook.com/' + @result['id'] + '/picture?type=large'), @result['link'] %></div>
 	<p id="link"><%= link_to 'Direct link to this result!', find_url(:id => params[:id] )%></p>
 </div>
