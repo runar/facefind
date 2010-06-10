@@ -61,7 +61,7 @@ class ProfilesController < ApplicationController
       format.html { redirect_to root_path, :state => :not_found, :notice => message }
       
       # JSON: 404 and blank file
-      format.json { head :status => :not_found }
+      format.json { render :json => message, :status => :not_found }
     end
   end
 
