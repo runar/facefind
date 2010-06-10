@@ -3,6 +3,9 @@ class ProfilesController < ApplicationController
   
   def index
   end
+  
+  def about
+  end
 
   def search
     # Redirect to root path unless id exists
@@ -24,13 +27,13 @@ class ProfilesController < ApplicationController
     
     # No matches, show error
     else
-      handle_error('Wrong format!') and return
+      handle_error('Wrong format or not a Facebook picture!') and return
     end
     
     # Parse Facebook Graph API with profile id
     uri = URI.parse('http://graph.facebook.com/' + profile_id)
     http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Get.new(uri.request_uri)    
+    request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     
     # Decode old JSON response as hash
