@@ -1,4 +1,8 @@
 Facefind::Application.routes.draw do |map|
+  get "profiles/index"
+
+  get "profiles/find"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
