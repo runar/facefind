@@ -1,4 +1,2 @@
-<h2 id="name"><a href="http://facebook.com/profile.php?id=<%= @result['id'] %>"><%= @result['name'] %></a></h2>
-<div id="picture">
-	<a href="http://facebook.com/profile.php?id=<%= @result['id'] %>"><img src="http://graph.facebook.com/<%= @result['id'] %>/picture?type=large" alt="Profilbilde" /></a>
-</div>
+<h2 id="name"><%= link_to @result['name'], @result['link'] %></h2>
+<div id="picture"><%= link_to image_tag('http://graph.facebook.com/' + @result['id'] + '/picture?type=large'), @result['link'] %></div>
