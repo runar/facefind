@@ -13,19 +13,10 @@
 	<div id="wrapper">
 		<ul id="nav">
 			<li><%= link_to "home", root_path %></li>
-			<li><a href="/about">about</a></li>
+			<li><%= link_to "about", about_path %></li>
 		</ul>
 
-		<%= form_tag(search_path, :method => "get", :id => "faceform") do %>
-			<%= text_field_tag(:id, params[:id]) %>
-			<%= submit_tag "Find its face!", :id => "submit" %>
-		<% end -%>
-		
-		<%= flash_notice %>
-
-		<div id="results">		
-			<%= yield %>
-		</div>
+		<%= yield %>
 	</div>
 
 	<p id="footer">Facefind is copyright 2010. We own rights to everything, including pictures and profiles found with our service.</p>
