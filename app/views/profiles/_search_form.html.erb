@@ -1,3 +1,5 @@
+<h3 id="guide">Enter your Facebook picture URL in the field below:</h3>
+
 <%= form_tag(search_path, :method => "get", :id => "faceform") do %>
 	<%= text_field_tag(:id, params[:id]) %>
 	<%= submit_tag "Find its face!", :id => "submit" %>
