@@ -3,8 +3,29 @@
 
 $(document).ready( function() {
 	
+	// Remove info text above search form
+	$('#guide').hide();
+	
+	// Add value to input, and remove on focus
+	$('input#id').each( function() {
+		value = 'Enter your Facebook picture URL here!';		
+		if( $(this).val().length < 1 ) {
+			$(this).val(value).attr('title', value).toggleClass('blur').focus( function() {
+				if( $(this).val() == $(this).attr('title') ) {
+					$(this).val('').toggleClass('blur');
+				}
+			}).blur( function() {
+				if( $(this).val() == '' || $(this).val() == ' ' ) {
+					$(this).val($(this).attr('title')).toggleClass('blur');
+				}
+			});
+		}
+	});
+	
+	// AJAX stuff
+	// Happens when #faceform is submitted
 	$('#faceform').submit( function() {
-		url = escape($('#id').val());
+		url = encodeURIComponent($('#id').val());
 		furl = 'http://facebook.com/profile.php?id=';
 		$.ajax({
 			url: '/find.json',
