@@ -5,7 +5,9 @@ Facefind::Application.routes.draw do |map|
   
   # Search route
   match '/search' => "profiles#search", :as => :search
-
+  
+  # About route
+  match '/about' => "profiles#about", :as => :about
   
   # Root route
   root :to => "profiles#index"
