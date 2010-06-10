@@ -20,6 +20,8 @@
 			<%= text_field_tag(:id, params[:id]) %>
 			<%= submit_tag "Find this face!", :id => "submit" %>
 		<% end -%>
+		
+		<%= flash_notice %>
 
 		<div id="results">		
 			<%= yield %>
