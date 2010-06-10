@@ -1,6 +1,13 @@
 Facefind::Application.routes.draw do |map|
+  
+  # Find profile route
+  match '/find(.:format)(/:id)' => "profiles#find", :as => :find
+  
+  # Search route
+  match '/search' => "profiles#search", :as => :search
 
-  # Root
+  
+  # Root route
   root :to => "profiles#index"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
