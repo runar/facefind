@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Facefind</title>
+  <title>facefind</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+	
+	<h1><%= link_to "facefind", root_path %></h1>
 
-<%= yield %>
+	<div id="wrapper">
+		<ul id="nav">
+			<li><%= link_to "home", root_path %></li>
+			<li><a href="/about">about</a></li>
+		</ul>
+
+		<%= form_tag('/find', :method => "get", :id => "faceform") do %>
+			<%= text_field_tag(:q, params[:q]) %>
+			<%= submit_tag "Find this face!", :id => "submit" %>
+		<% end -%>
+
+		<div id="results">		
+			<%= yield %>
+		</div>
+
+	</div>
+
+	<p id="footer">Facefind is copyright 2010. We own rights to everything, including pictures and profiles found with our service.</p>
 
 </body>
 </html>
