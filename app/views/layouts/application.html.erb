@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>facefind</title>
+  <title>facefind!</title>
   <%= stylesheet_link_tag :all, :recursive => true %>
   <%= javascript_include_tag 'jquery.js', 'jquery.json-2.2.min.js', 'application.js' %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body id="<%= action_name %>">
 	
 	<h1><%= link_to "facefind", root_path %></h1>
 
 	<div id="wrapper">
 		<ul id="nav">
-			<li><%= link_to "home", root_path %></li>
-			<li><%= link_to "about", about_path %></li>
+			<li><%= link_to "home", root_path, :id => "index" %></li>
+			<li><%= link_to "about", about_path, :id => "about" %></li>
 		</ul>
 
 		<%= yield %>
 	</div>
 
-	<p id="footer">Facefind is copyright 2010. We own rights to everything, including pictures and profiles found with our service.</p>
+	<p id="footer">Some data is saved for statistic purposes.</p>
 
 </body>
 </html>
