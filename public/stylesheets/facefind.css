@@ -116,7 +116,7 @@ form {
 		}
 	
 	form input#submit {
-		background-color: #eee;
+		background: #eee;
 		border-color: #eee #888 #888 #eee;
 		display: block;
 		font-size: 14px;
@@ -125,3 +125,16 @@ form {
 		padding: 0 8px;
 		width: auto;
 	}
+	
+
+/* - - - - - - - - - - - - - - - - - - - -
+  RESULTS
+  - - - - - - - - - - - - - - - - - - - - */
+#results {
+	text-align: center;
+}
+
+	#results img {
+		margin: 0 auto;
+	}
+	
