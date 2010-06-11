@@ -1,5 +1,16 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# English localization file
 
-en:
-  hello: "Hello world"
+en:    
+    menu:
+        home: home
+        about: about
+        
+    form:
+        guide: "Enter your Facebook picture URL in the field below:"
+        button: Find its face!
+        
+    footer: "Some data is saved for statistic purposes. Served {{total_profiles}} Facebook profiles so far."
+    
+    errors:
+        not_found: Nothing found!
+        wrong_format: Wrong format or not a Facebook picture!

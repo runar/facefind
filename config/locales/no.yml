@@ -1,0 +1,16 @@
+# Norwegian localization file
+
+"no":
+    menu:
+        home: hjem
+        about: om oss
+        
+    form:
+        guide: "Lim inn linken til Facebookbildet i feltet under:"
+        button: Find fjeset!
+        
+    footer: "Noe data blir lagret for statistikk. Så langt har vi servert {{total_profiles}} Facebookprofiler."
+    
+    errors:
+        not_found: Ingen resultater!
+        wrong_format: Feil format eller ugyldig Facebookbilde!
