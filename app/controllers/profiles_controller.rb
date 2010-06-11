@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   respond_to :html, :json, :only => :find
   
   def index
-    @profiles = Profile.all
+    # Count total profiles stored
+    @total_profiles = Profile.count
   end
   
   def about
