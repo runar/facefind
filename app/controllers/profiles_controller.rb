@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
   respond_to :html, :json, :only => :find
   
+  before_filter :count_profiles
+  
   def index
-    # Count total profiles stored
-    @total_profiles = Profile.count
   end
   
   def about
@@ -70,6 +70,11 @@ class ProfilesController < ApplicationController
       # JSON: 404 and blank file
       format.json { render :json => message, :status => :not_found }
     end
+  end
+  
+  ## Count total profiles stored
+  def count_profiles
+    @total_profiles = Profile.count
   end
 
 end
