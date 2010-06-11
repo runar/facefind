@@ -7,6 +7,8 @@ gem 'rails', '3.0.0.beta3'
 
 gem 'mysql'
 
+gem 'http_accept_language', :git => 'git://github.com/iain/http_accept_language.git'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
