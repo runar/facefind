@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   respond_to :html, :json, :only => :find
   
   def index
+    @profiles = Profile.all
   end
   
   def about
@@ -44,6 +45,8 @@ class ProfilesController < ApplicationController
     
     # Add Facebook link if not included in data fetched from API
     @result["link"] ||= profile_link_for(@result["id"])
+    
+    @profile = Profile.find_or_create_by_facebook_id(:facebook_id => @result['id'])
     
     # Respond!
     respond_with(@result)
