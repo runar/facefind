@@ -28,8 +28,7 @@ $(document).ready( function() {
 		url = encodeURIComponent($('#id').val());
 		furl = 'http://facebook.com/profile.php?id=';
 		$.ajax({
-			url: '/find.json',
-			data: 'id=' + url,
+			url: '/find.json/' + url,
 			dataType: 'json',
 			beforeSend: function() {
 				$('#name').html('<img src="/images/loading.gif" alt="" />');
