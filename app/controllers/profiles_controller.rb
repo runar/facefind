@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   # Count profiles in all actions, except search
   before_filter :count_profiles, :except => :search
   
+  caches_action :index, :about
+  
   def index
   end
   
@@ -52,6 +54,8 @@ class ProfilesController < ApplicationController
     
     # Respond!
     respond_with(@result)
+    
+    expire_action :action => :index
   end
   
   private
