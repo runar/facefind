@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
   respond_to :html, :json, :only => :find
   
-  before_filter :count_profiles
+  # Count profiles in all actions, except search
+  before_filter :count_profiles, :except => :search
   
   def index
   end
@@ -29,7 +30,7 @@ class ProfilesController < ApplicationController
     
     # No matches, show error
     else
-      handle_error('Wrong format or not a Facebook picture!') and return
+      handle_error(t('errors.wrong_format')) and return
     end
     
     # Parse Facebook Graph API with profile id
@@ -42,7 +43,7 @@ class ProfilesController < ApplicationController
     @result = ActiveSupport::JSON.decode(response.body)
     
     # Redirect to error page if invalid ID or none found
-    handle_error('Nothing found!') and return unless @result.respond_to?(:has_key?) and @result.has_key?("name")
+    handle_error(t('errors.not_found')) and return unless @result.respond_to?(:has_key?) and @result.has_key?("name")
     
     # Add Facebook link if not included in data fetched from API
     @result["link"] ||= profile_link_for(@result["id"])
@@ -65,14 +66,14 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       
       # HTML: Redirect to root with 404 and flash notice
-      format.html { redirect_to root_path, :state => :not_found, :notice => message }
+      format.html { redirect_to home_path, :state => :not_found, :notice => message }
       
       # JSON: 404 and blank file
       format.json { render :json => message, :status => :not_found }
     end
   end
   
-  ## Count total profiles stored
+  # Count total profiles stored
   def count_profiles
     @total_profiles = Profile.count
   end
