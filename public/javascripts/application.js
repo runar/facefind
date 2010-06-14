@@ -28,7 +28,7 @@ $(document).ready( function() {
 		url = encodeURIComponent($('#id').val());
 		furl = 'http://facebook.com/profile.php?id=';
 		$.ajax({
-			url: '/find.json/' + url,
+			url: '/find.json?id=' + url,
 			dataType: 'json',
 			beforeSend: function() {
 				$('#name').html('<img src="/images/loading.gif" alt="" />');
@@ -38,7 +38,7 @@ $(document).ready( function() {
 			success: function(msg) {
 				$('#name').html('<a href="' + furl + msg.id + '">' + msg.name + '</a>');
 				$('#picture').html('<a href="' + furl + msg.id + '"><img src="http://graph.facebook.com/' + msg.id + '/picture?type=large" alt="Profile Picture" /></a>');
-				$('#link').html('<a href="http://localhost:3000/find/' + url + '">Direct link to this result!</a>');
+				$('#link').html('<a href="http://bob.eplekake.net/find/' + url + '">Direct link to this result!</a>');
 			},
 			error: function(x, e) {
 				$('#name').text(x.responseText).addClass('error');

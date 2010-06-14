@@ -8,18 +8,18 @@
 </head>
 <body id="<%= action_name %>">
 	
-	<h1><%= link_to "facefind", home_path %></h1>
+	<h1><%= link_to "facefind", root_path %></h1>
 
 	<div id="wrapper">
 		<ul id="nav">
-			<li><%= link_to t('menu.home'), home_path, :id => "index" %></li>
-			<li><%= link_to t('menu.about'), about_path, :id => "about" %></li>
+			<li><%= link_to 'home', root_path, :id => "index" %></li>
+			<li><%= link_to 'about', about_path, :id => "about" %></li>
 		</ul>
 
 		<%= yield %>
 	</div>
 
-	<p id="footer"><%=t :footer, :total_profiles => @total_profiles %></p>
+	<p id="footer">Some data is saved for statistic purposes. Served <%= @total_profiles %> Facebook profiles so far.</p>
 
 </body>
 </html>

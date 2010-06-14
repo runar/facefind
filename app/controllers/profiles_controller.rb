@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     
     # No matches, show error
     else
-      handle_error(t('errors.wrong_format')) and return
+      handle_error('Wrong format or not a Facebook picture!') and return
     end
     
     # Parse Facebook Graph API with profile id
@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
     @result = ActiveSupport::JSON.decode(response.body)
     
     # Redirect to error page if invalid ID or none found
-    handle_error(t('errors.not_found')) and return unless @result.respond_to?(:has_key?) and @result.has_key?("name")
+    handle_error('Nothing found!') and return unless @result.respond_to?(:has_key?) and @result.has_key?("name")
     
     # Add Facebook link if not included in data fetched from API
     @result["link"] ||= profile_link_for(@result["id"])
